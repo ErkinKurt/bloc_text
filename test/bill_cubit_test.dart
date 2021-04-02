@@ -13,6 +13,14 @@ void main() {
     tearDown(() {
       billCubit.close();
     });
+
+    //Regular test that succeds.
+    test('emits new state with [amount] when change amount is called', () {
+      billCubit.changeAmount('23.3');
+      expect(billCubit.state.amount == 23.3, true);
+    });
+
+    // Bloc Test that throws error.
     blocTest<BillCubit, BillState>(
       'emits new state with [amount]'
       'when change amount is called',
